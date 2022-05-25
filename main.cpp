@@ -1,9 +1,12 @@
 
-#include <math.h>
+#include <cmath>
 
 using namespace std;
 
 //Declare initial variables and parametrs
+
+
+#define PI 3.14159265
 
 //Step
 const int STEPS[2] = {7, 8};
@@ -30,6 +33,14 @@ const int motors = 2;
 
 //Motor angle at homing
 const double default_angles[2] = {3.3, 4.8};
+
+const double platform = 0.1;
+
+const double upper_arm = 0.3;
+
+const double lower_arm = 0.15;
+
+const double distance = 0.45;
 
 //Default spinning directions. Should be determined through testing
 const bool default_direction_cc[2] = {true, true};
@@ -288,12 +299,12 @@ void move(int coord, int motor)
     }
 }
 
-//Function that uses tool whichever the current coordinates
-void useTool()
+double calculateAngle(double Xcoord, double Ycoord, int motor)
 {
-    digitalWrite(TOOL, HIGH);
-    move(range[3], 3);
-    delayMicroseconds(actuation_length);
-    move(0, 3);
-    digitalWrite(TOOL, LOW);
+    double  angle = 0.0;
+    if (!motor)
+    {
+        int foo;
+    }
+    return angle;
 }
