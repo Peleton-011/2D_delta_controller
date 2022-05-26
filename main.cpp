@@ -42,6 +42,8 @@ const double lower_arm = 0.15;
 
 const double distance = 0.45;
 
+const double leftShoulder[2] = {0.0, 0.0};
+
 //Default spinning directions. Should be determined through testing
 const bool default_direction_cc[2] = {true, true};
 
@@ -302,10 +304,30 @@ void move(int coord, int motor)
 double calculateAngle(double Xcoord, double Ycoord, int motor)
 {
     double  angle = 0.0;
+    double aux1;
+    double aux2;
+    double auxDenominator;
+    double auxCos;
+
     if (!motor)
     {
-        int foo;
+        aux1 = Xcoord - 0.5*platform - leftShoulder[0] + 0.5*distance;
+        aux2 = Ycoord - leftShoulder[1];
     }
+    else
+    {
+        aux1 = Xcoord - 0.5*platform - leftShoulder[0] - 1.5*distance;
+        aux2 = Ycoord - leftShoulder[1];
+    }
+
+    auxDenominator = squirt(aux1*aux1 + aux2*aux2);
+
+    auxCos = aux1*aux1 + aux2*aux2 + upper_arm*upper_arm - lower_arm*lower_arm 
+
+    angle = arcsine(aux1 / auxDenominator);
+
+    angle -= arccos(auxCos / (2*upper_arm*auxDenominator)); 
+
     return angle;
 }
 
