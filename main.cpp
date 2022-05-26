@@ -308,3 +308,27 @@ double calculateAngle(double Xcoord, double Ycoord, int motor)
     }
     return angle;
 }
+
+double arcsine(double foo)
+{
+    if (-1 > foo)
+    {
+        return asin(-1);
+    }
+    else if (foo > 1)
+    {
+        return asin(1);
+    }
+
+    return asin(foo);
+}
+
+double squirt(double foo)
+{
+    if (foo < 0)
+    {
+        return 0.0;
+    }
+
+    return sqrt(foo);
+}
