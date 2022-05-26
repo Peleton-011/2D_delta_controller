@@ -323,6 +323,20 @@ double arcsine(double foo)
     return asin(foo);
 }
 
+double arccos(double foo)
+{
+    if (-1 > foo)
+    {
+        return acos(-1);
+    }
+    else if (foo > 1)
+    {
+        return acos(1);
+    }
+
+    return acos(foo);
+}
+
 double squirt(double foo)
 {
     if (foo < 0)
